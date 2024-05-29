@@ -139,6 +139,7 @@ const Dashboard: React.FC = () => {
           onDelete={handleDeleteCustomer}
         />
         <ReusableModal
+        size={"xl"}
           title={
             !!selectedCustomer.companyName ? "Edit Customer" : "New Customer"
           }

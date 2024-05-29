@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Button, TextInput, useMantineTheme, rem } from "@mantine/core";
+import { Select, Button, TextInput, useMantineTheme,Text, rem } from "@mantine/core";
 import { useModal } from "@/context/ModalContext";
 import { IconSearch } from "@tabler/icons-react";
 import { IndustryEnum } from "@/core/enums/industry.enum";
@@ -26,16 +26,15 @@ interface HeaderProps {
   status,
 }) => {
   const { openModal } = useModal();
-  const theme = useMantineTheme();
   const addCustomer=()=>{
     destroyData()
     openModal()
   }
   return (
     <div className="flex flex-col gap-7">
-      <div className="text-lg font-bold flex flex-col items-center ">
+      <Text fz="h3" fw={700} className="text-lg font-bold flex flex-col items-center ">
         Customer Dashboard
-      </div>
+      </Text>
       <div className="flex justify-between items-center">
         <TextInput
           radius="xl"

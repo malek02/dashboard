@@ -70,7 +70,7 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                   <div className="flex-1 flex flex-col gap-3">
                     <Text fz="lg" fw={600}>
                       {" "}
-                      Company
+                      Company Fields
                     </Text>
                     <TextInput
                       label="Company Name"
@@ -120,8 +120,8 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
 
                   <div className="flex-1 flex flex-col gap-3">
                     <Text fz="lg" fw={600}>
-                      {" "}
-                      Project
+              
+                      Project Fields
                     </Text>
                     <TextInput
                       label={`Project  Name`}
@@ -149,10 +149,14 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                     <DateInput
                       label="Start project"
                       placeholder="Choose Date"
-                      value={!!projectFields.startDate?dayjs(
-                        projectFields.startDate,
-                        "YYYY MMM DD"
-                      ).toDate():undefined}
+                      value={
+                        !!projectFields.startDate
+                          ? dayjs(
+                              projectFields.startDate,
+                              "YYYY MMM DD"
+                            ).toDate()
+                          : undefined
+                      }
                       onChange={(value) => {
                         setProjectFields({
                           ...projectFields,
@@ -165,10 +169,14 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                     <DateInput
                       label="End project"
                       placeholder="Choose Date"
-                      value={!!projectFields?.endDate?dayjs(
-                        projectFields?.endDate,
-                        "YYYY MMM DD"
-                      ).toDate() : undefined}
+                      value={
+                        !!projectFields?.endDate
+                          ? dayjs(
+                              projectFields?.endDate,
+                              "YYYY MMM DD"
+                            ).toDate()
+                          : undefined
+                      }
                       onChange={(value) => {
                         setProjectFields({
                           ...projectFields,
@@ -194,7 +202,10 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                     </Button>
                   </div>
                 </div>
-                <Grid className="w-full">
+                <div className="flex flex-col overflow-x-hidden items-start gap-3 w-full">
+                {!!values.projects.length && <Text fz="lg" fw={600}>Projects</Text>}
+                <Grid overflow={"auto"} className=" max-h-64  w-full">
+              
                   {values.projects.map((project, index) => (
                     <Grid.Col key={index} span={{ base: 12, xs: 4 }}>
                       <ProjectCard
@@ -206,6 +217,7 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                     </Grid.Col>
                   ))}
                 </Grid>
+                </div>
               </>
             )}
           </FieldArray>
