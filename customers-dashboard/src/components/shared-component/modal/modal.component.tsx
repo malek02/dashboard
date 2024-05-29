@@ -6,14 +6,15 @@ import {useModal} from "@/context/ModalContext";
 interface ReusableModalProps {
     title: string;
     children: React.ReactNode;
+    size:string;
    
 }
 
-export const ReusableModal: React.FC<ReusableModalProps> = ({ title, children }) => {
+export const ReusableModal: React.FC<ReusableModalProps> = ({size, title, children }) => {
     const { isOpen, closeModal } = useModal();
 
     return (
-        <Modal opened={isOpen}  onClose={closeModal} size={"xl"} title={title}>
+        <Modal opened={isOpen}  onClose={closeModal} size={size} title={title}>
             {children}
         </Modal>
     );
