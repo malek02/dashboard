@@ -87,7 +87,7 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                       label="Customer Status"
                       placeholder="Select status"
                       name="costumerStatus"
-                      data={StatusEnum.items}
+                      data={StatusEnum.items.filter((item) => item.label !== "All")}
                       value={values.costumerStatus}
                       onChange={(value) =>
                         setFieldValue("costumerStatus", value)
@@ -101,7 +101,7 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                       placeholder="Select industry"
                       name="industry"
                       value={values.industry}
-                      data={IndustryEnum.items}
+                      data={IndustryEnum.items.filter((item) => item.label !== "All")}
                       onChange={(value) => setFieldValue("industry", value)}
                       error={touched.industry && errors.industry}
                       required
@@ -120,7 +120,6 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
 
                   <div className="flex-1 flex flex-col gap-3">
                     <Text fz="lg" fw={600}>
-              
                       Project Fields
                     </Text>
                     <TextInput
@@ -203,20 +202,23 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                   </div>
                 </div>
                 <div className="flex flex-col overflow-x-hidden items-start gap-3 w-full">
-                {!!values.projects.length && <Text fz="lg" fw={600}>Projects</Text>}
-                <Grid  className="h-52  w-full">
-              
-                  {values.projects.map((project, index) => (
-                    <Grid.Col key={index} span={{ base: 12, xs: 4 }}>
-                      <ProjectCard
-                        setProjectFields={setProjectFields}
-                        remove={remove}
-                        index={index}
-                        project={project}
-                      />
-                    </Grid.Col>
-                  ))}
-                </Grid>
+                  {!!values.projects.length && (
+                    <Text fz="lg" fw={600}>
+                      Projects
+                    </Text>
+                  )}
+                  <Grid className="h-52  w-full">
+                    {values.projects.map((project, index) => (
+                      <Grid.Col key={index} span={{ base: 12, xs: 4 }}>
+                        <ProjectCard
+                          setProjectFields={setProjectFields}
+                          remove={remove}
+                          index={index}
+                          project={project}
+                        />
+                      </Grid.Col>
+                    ))}
+                  </Grid>
                 </div>
               </>
             )}
