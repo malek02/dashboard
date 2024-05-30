@@ -204,7 +204,7 @@ const CustomerForm = ({ customer, onSave }: CustomerFormProps) => {
                 </div>
                 <div className="flex flex-col overflow-x-hidden items-start gap-3 w-full">
                 {!!values.projects.length && <Text fz="lg" fw={600}>Projects</Text>}
-                <Grid overflow={"auto"} className=" max-h-64  w-full">
+                <Grid  className="h-52  w-full">
               
                   {values.projects.map((project, index) => (
                     <Grid.Col key={index} span={{ base: 12, xs: 4 }}>
