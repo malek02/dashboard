@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import cx from "clsx";
 import {
   Table,
-  Button,
   ScrollArea,
   Badge,
   ActionIcon,
@@ -52,15 +51,18 @@ export const CustomerTable: React.FC<CustomerTableProps> = ({
           {customers.map((customer) => (
             <Table.Tr key={customer.costumerId}>
               <Table.Td>{customer.companyName}</Table.Td>
-              <Table.Td>{customer.projects.length}</Table.Td>
+              <Table.Td>
+                {customer.projects.length + " Project"}{" "}
+               
+              </Table.Td>
               <Table.Td>{customer.industry}</Table.Td>
               <Table.Td>
                 {customer.costumerStatus === StatusEnum.Active ? (
-                  <Badge color="green"  variant="light" fullWidth>
+                  <Badge variant="light" fullWidth>
                     Active
                   </Badge>
                 ) : (
-                  <Badge  color="gray" variant="light" fullWidth >
+                  <Badge color="gray" variant="light" fullWidth>
                     Inactive
                   </Badge>
                 )}
@@ -78,15 +80,16 @@ export const CustomerTable: React.FC<CustomerTableProps> = ({
                 </ActionIcon>
 
                 {customer.costumerStatus === StatusEnum.Inactive && (
-              
                   <ActionIcon
-                  variant="subtle"
-                  color="red"
-                  onClick={() => onDelete(customer.costumerId)}
-                >
-                  <IconTrash style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
-        
-                </ActionIcon>
+                    variant="subtle"
+                    color="red"
+                    onClick={() => onDelete(customer.costumerId)}
+                  >
+                    <IconTrash
+                      style={{ width: rem(16), height: rem(16) }}
+                      stroke={1.5}
+                    />
+                  </ActionIcon>
                 )}
               </Table.Td>
             </Table.Tr>
