@@ -1,7 +1,6 @@
 "use client"
 
 import { ModalProvider } from "@/context/ModalContext";
-import { AppShell } from "@mantine/core";
 
 const Layout = async ({ children }: Readonly<{
        children: React.ReactNode;
@@ -9,7 +8,7 @@ const Layout = async ({ children }: Readonly<{
 
   return (
     <ModalProvider>
-      <AppShell className="p-10 flex flex-col gap-10">{children}</AppShell>
+      <div className="p-10 flex flex-col gap-10">{children}</div>
     </ModalProvider>
   );
 };

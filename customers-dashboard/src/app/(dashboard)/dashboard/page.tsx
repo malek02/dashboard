@@ -12,7 +12,8 @@ import { ReusableModal } from "@/components/shared-component/modal/modal.compone
 import Header from "@/components/Header.component";
 import { IndustryEnum } from "@/core/enums/industry.enum";
 import { StatusEnum } from "@/core/enums/custumerStatus.enum";
-import { useFetchCustomers } from "@/components/customHooks/useFetchCustomers";
+import { useFetchCustomers } from "@/hooks/useFetchCustomers";
+
 
 const Dashboard: React.FC = () => {
  
